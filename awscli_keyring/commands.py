@@ -4,7 +4,12 @@ import os
 from botocore.compat import OrderedDict
 
 from awscli.customizations.commands import BasicCommand
-from awscli.customizations.configure import ConfigFileWriter
+
+# awscli 1.10.22 has rearranged some classes
+try:
+    from awscli.customizations.configure import ConfigFileWriter
+except ImportError:
+    from awscli.customizations.configure.writer import ConfigFileWriter
 
 from . import persistence
 
